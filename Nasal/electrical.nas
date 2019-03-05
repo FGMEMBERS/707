@@ -215,8 +215,12 @@ var init_switches = func{
     append(EssDCbus_input,AVswitch);
     append(EssDCbus_output,props.globals.initNode("systems/electrical/outputs/adf",0,"DOUBLE"));
     append(EssDCbus_load,1);
+	append(EssDCbus_output,props.globals.initNode("systems/electrical/outputs/adf[1]",0,"DOUBLE"));
+	append(EssDCbus_load,1);
     append(EssDCbus_input,AVswitch);
     append(EssDCbus_output,props.globals.initNode("systems/electrical/outputs/dme",0,"DOUBLE"));
+    append(EssDCbus_load,1);
+    append(EssDCbus_output,props.globals.initNode("systems/electrical/outputs/dme[1]",0,"DOUBLE"));
     append(EssDCbus_load,1);
     append(EssDCbus_input,AVswitch);
     append(EssDCbus_output,props.globals.initNode("systems/electrical/outputs/gps",0,"DOUBLE"));
@@ -919,6 +923,44 @@ setlistener("b707/apu/starter", func (state){
 			setprop("sim/sound/switch2", 1);
 		} 
 }); 
+
+################################# serviceable devices #####################################
+var radio_serviceable = func {
+   if (getprop("systems/electrical/outputs/comm[0]") > 18.0)
+      setprop("instrumentation/comm[0]/serviceable", 1);
+   else setprop("instrumentation/comm[0]/serviceable", 0);
+
+   if (getprop("systems/electrical/outputs/comm[1]") > 18.0)
+      setprop("instrumentation/comm[1]/serviceable", 1);
+   else setprop("instrumentation/comm[1]/serviceable", 0);
+
+   if (getprop("systems/electrical/outputs/nav[0]") > 18.0)
+      setprop("instrumentation/nav[0]/serviceable", 1);
+   else setprop("instrumentation/nav[0]/serviceable", 0);
+
+   if (getprop("systems/electrical/outputs/nav[1]") > 18.0)
+      setprop("instrumentation/nav[1]/serviceable", 1);
+   else setprop("instrumentation/nav[1]/serviceable", 0);
+
+   if (getprop("systems/electrical/outputs/adf[0]") > 18.0)
+      setprop("instrumentation/adf[0]/serviceable", 1);
+   else setprop("instrumentation/adf[0]/serviceable", 0);
+
+   if (getprop("systems/electrical/outputs/adf[1]") > 18.0)
+      setprop("instrumentation/adf[1]/serviceable", 1);
+   else setprop("instrumentation/adf[1]/serviceable", 0);
+
+   if (getprop("systems/electrical/outputs/dme[0]") > 18.0)
+      setprop("instrumentation/dme[0]/serviceable", 1);
+   else setprop("instrumentation/dme[0]/serviceable", 0);
+
+   if (getprop("systems/electrical/outputs/dme[1]") > 18.0)
+     setprop("instrumentation/dme[1]/serviceable", 1);
+   else setprop("instrumentation/dme[1]/serviceable", 0);
+
+   settimer(radio_serviceable, 2);
+}
+
  
 ##############################################################################################
 setlistener("sim/signals/fdm-initialized", func {
@@ -927,7 +969,8 @@ setlistener("sim/signals/fdm-initialized", func {
     settimer(gen_kw,5);
     settimer(ac_sync,5);
     settimer(func{ setprop("b707/fuel/temperature", getprop("/environment/temperature-degc")) } , 5);
-    
+    settimer(radio_serviceable,5);
+	
     print("Electrical System ... Initialized");
     
     setprop("controls/engines/msg", 1);

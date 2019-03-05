@@ -27,7 +27,7 @@ if you contacted me before making any changes to this software.
 <!-- specific ADF -->
 <adf n="0">
   <mode>adf</mode>
-  <serviceable type="bool">true</serviceable>
+  <serviceable type="bool">false</serviceable>
   <frequencies>
     <selected-khz type="int">490</selected-khz>  <!-- NDB "DVI" (Donaueschingen) -->
     <standby-khz type="int">401</standby-khz>    <!-- EDTM ancient military airbase -->
@@ -36,7 +36,7 @@ if you contacted me before making any changes to this software.
 
 <adf n="1">
   <mode>adf</mode>
-  <serviceable type="bool">true</serviceable>
+  <serviceable type="bool">false</serviceable>
   <frequencies>
     <selected-khz type="int">442</selected-khz>  <!-- EDNY near the lake of constance -->
     <standby-khz type="int">473</standby-khz>    <!-- EDSN ancient military airbase -->
@@ -74,7 +74,7 @@ if you contacted me before making any changes to this software.
     <standby-mhz-fmt type="string">109.60</standby-mhz-fmt>
     <standby-mhz type="double">109.6</standby-mhz>
   </frequencies>
-  <serviceable type="bool">true</serviceable>
+  <serviceable type="bool">false</serviceable>
   <radials><selected-deg>0</selected-deg></radials>
 </nav>
 <nav n="1">
@@ -88,13 +88,13 @@ if you contacted me before making any changes to this software.
     <standby-mhz-fmt type="string">116.10</standby-mhz-fmt>
     <standby-mhz type="double">116.10</standby-mhz>
   </frequencies>
-  <serviceable type="bool">true</serviceable>
+  <serviceable type="bool">false</serviceable>
   <radials><selected-deg>0</selected-deg></radials>
 </nav>
 
 <dme n="0">
   <mode>dme</mode>
-  <serviceable type="bool">true</serviceable>
+  <serviceable type="bool">false</serviceable>
   <frequencies>
     <selected-mhz type="double">114.30</selected-mhz>
     <source type="string">instrumentation/nav[0]/frequencies/selected-mhz</source>
@@ -111,7 +111,7 @@ if you contacted me before making any changes to this software.
 
 <dme n="1">
   <mode>dme</mode>
-  <serviceable type="bool">true</serviceable>
+  <serviceable type="bool">false</serviceable>
   <frequencies>
     <selected-mhz type="double">110.05</selected-mhz>
     <source type="string">instrumentation/nav[1]/frequencies/selected-mhz</source>
@@ -127,6 +127,7 @@ if you contacted me before making any changes to this software.
 </dme>
 
 <comm n="0">
+  <serviceable type="bool">false</serviceable>
   <frequencies>
     <display-sel-khz type="int">0</display-sel-khz>
     <display-sel-mhz type="int">0</display-sel-mhz>
@@ -137,20 +138,8 @@ if you contacted me before making any changes to this software.
 </frequencies>
 </comm>
 
-<comm-radio>
-  <name>comm</name>
-  <number>0</number>
-  <frequencies>
-    <display-sel-khz type="int">0</display-sel-khz>
-    <display-sel-mhz type="int">0</display-sel-mhz>
-    <selected-mhz-fmt type="string">127.32</selected-mhz-fmt>
-    <display-sby-khz type="int">0</display-sby-khz>
-    <display-sby-mhz type="int">0</display-sby-mhz>
-    <standby-mhz-fmt type="string">118.10</standby-mhz-fmt>
-</frequencies>
-</comm-radio>
-
 <comm n="1">
+  <serviceable type="bool">false</serviceable>
   <frequencies>
     <display-sel-khz type="int">0</display-sel-khz>
     <display-sel-mhz type="int">0</display-sel-mhz>
