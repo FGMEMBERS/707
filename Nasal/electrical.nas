@@ -926,11 +926,11 @@ setlistener("b707/apu/starter", func (state){
 
 ################################# serviceable devices #####################################
 var radio_serviceable = func {
-   if (getprop("systems/electrical/outputs/comm[0]") > 18.0)
+   if (getprop("systems/electrical/outputs/comm[0]") > 18.0 and getprop("instrumentation/comm[0]/on-off-switch"))
       setprop("instrumentation/comm[0]/serviceable", 1);
    else setprop("instrumentation/comm[0]/serviceable", 0);
 
-   if (getprop("systems/electrical/outputs/comm[1]") > 18.0)
+   if (getprop("systems/electrical/outputs/comm[1]") > 18.0 and getprop("instrumentation/comm[1]/on-off-switch"))
       setprop("instrumentation/comm[1]/serviceable", 1);
    else setprop("instrumentation/comm[1]/serviceable", 0);
 

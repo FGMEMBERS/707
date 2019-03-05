@@ -231,7 +231,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch</object-name>
-	  <property>instrumentation/comm[0]/serviceable</property>
+	  <property>instrumentation/comm[0]/on-off-switch</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -253,7 +253,7 @@ if you contacted me before making any changes to this software.
 	      <button>0</button>      
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/comm[0]/serviceable</property>
+	        <property>instrumentation/comm[0]/on-off-switch</property>
 	      </binding>  
 	      <binding>
 	        <command>property-toggle</command>
@@ -380,7 +380,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.001</object-name>
-	  <property>instrumentation/comm[1]/serviceable</property>
+	  <property>instrumentation/comm[1]/on-off-switch</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -402,7 +402,7 @@ if you contacted me before making any changes to this software.
 	      <button>0</button>      
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/comm[1]/serviceable</property>
+	        <property>instrumentation/comm[1]/on-off-switch</property>
 	      </binding>  
 	      <binding>
 	        <command>property-toggle</command>
