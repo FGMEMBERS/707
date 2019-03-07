@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!--####################################################################
 Lake of Constance Hangar
@@ -113,30 +114,30 @@ if you contacted me before making any changes to this software.
 	    <blue>  0.5 </blue>
 	  </emission>
 	</animation>
-	
+
 	<!-- Comm[0] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON</object-name>
-	  <condition>
-		<greater-than>
-			<property>b707/ess-bus</property>
-			<value>20</value>
-		</greater-than>
-	    <or>
-		    <and>
-	      	  <property>instrumentation/comm[0]/serviceable</property>
-	      	  <property>instrumentation/comm[0]/ptt</property>				  
-			<less-than>
-		      	<property>instrumentation/comm[0]/slant-distance-m</property>
-				<value>105000</value>
-		    </less-than>
-			</and>
-	      <property>controls/test/warn-knob</property>
-	    </or>
-	  </condition>
+		<type>select</type>
+		<object-name>LampWhiteON</object-name>
+		<condition>
+			<greater-than>
+				<property>b707/ess-bus</property>
+				<value>20</value>
+			</greater-than>
+			<or>
+				<and>
+					<property>instrumentation/comm[0]/serviceable</property>
+					<property>instrumentation/comm[0]/power-btn</property>
+					<greater-than>
+						<property>instrumentation/comm[0]/signal-quality-norm</property>
+						<value>0.4</value>
+					</greater-than>
+				</and>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob</object-name>
@@ -162,15 +163,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[0]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -179,15 +180,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[0]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -196,15 +197,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[0]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -213,15 +214,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[0]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -231,7 +232,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch</object-name>
-	  <property>instrumentation/comm[0]/on-off-switch</property>
+	  <property>instrumentation/comm[0]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -250,42 +251,41 @@ if you contacted me before making any changes to this software.
 	  <visible>true</visible>
 	  <object-name>switch</object-name>
 	  <action>
-	      <button>0</button>      
+	      <button>0</button>
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/comm[0]/on-off-switch</property>
-	      </binding>  
+	        <property>instrumentation/comm[0]/power-btn</property>
+	      </binding>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>sim/sound/switch1</property>
 	      </binding>
 	  </action>
 	</animation>
-	
+
 	<!-- Comm[1] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.001</object-name>
-	  <condition>
-		  <and>
+		<type>select</type>
+		<object-name>LampWhiteON.001</object-name>
+		<condition>
 			<greater-than>
 				<property>b707/ess-bus</property>
 				<value>20</value>
 			</greater-than>
-		    <or>
-			    <and>
-		      	  <property>instrumentation/comm[1]/serviceable</property>
-				  <greater-than>
-		      	  	<property>instrumentation/comm[1]/signal-quality-norm</property>
-					<value>0.4</value>
-				  </greater-than>
+			<or>
+				<and>
+					<property>instrumentation/comm[1]/serviceable</property>
+					<property>instrumentation/comm[1]/power-btn</property>
+					<greater-than>
+						<property>instrumentation/comm[1]/signal-quality-norm</property>
+						<value>0.4</value>
+					</greater-than>
 				</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.001</object-name>
@@ -311,15 +311,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[1]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -328,15 +328,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[1]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -345,15 +345,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[1]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -362,15 +362,15 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/comm[1]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -380,7 +380,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.001</object-name>
-	  <property>instrumentation/comm[1]/on-off-switch</property>
+	  <property>instrumentation/comm[1]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -399,39 +399,34 @@ if you contacted me before making any changes to this software.
 	  <visible>true</visible>
 	  <object-name>switch.001</object-name>
 	  <action>
-	      <button>0</button>      
+	      <button>0</button>
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/comm[1]/on-off-switch</property>
-	      </binding>  
+	        <property>instrumentation/comm[1]/power-btn</property>
+	      </binding>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>sim/sound/switch1</property>
 	      </binding>
 	  </action>
 	</animation>
-	
+
 	<!-- Nav [0] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.002</object-name>
-	  <condition>
-		  <and>
+		<type>select</type>
+		<object-name>LampWhiteON.002</object-name>
+		<condition>
 			<greater-than>
 				<property>b707/ess-bus</property>
 				<value>20</value>
 			</greater-than>
-		    <or>
-				<and>
-			  	  <property>instrumentation/nav[0]/in-range</property>
-			  	  <property>instrumentation/nav[0]/ident</property>
-			  	</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
+			<or>
+				<property>instrumentation/nav[0]/in-range</property>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.002</object-name>
@@ -448,7 +443,7 @@ if you contacted me before making any changes to this software.
 			<z>1</z>
 		</axis>
 	</animation>
-	
+
 	<animation>
 		<type>pick</type>
 		<object-name>knob.002</object-name>
@@ -457,15 +452,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[0]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -474,15 +485,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[0]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -491,15 +518,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[0]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -508,15 +551,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[0]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -526,7 +585,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.002</object-name>
-	  <property>instrumentation/nav[0]/ident</property>
+	  <property>instrumentation/nav[0]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -545,39 +604,34 @@ if you contacted me before making any changes to this software.
 	  <visible>true</visible>
 	  <object-name>switch.002</object-name>
 	  <action>
-	      <button>0</button>      
+	      <button>0</button>
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/nav[0]/ident</property>
-	      </binding>  
+	        <property>instrumentation/nav[0]/power-btn</property>
+	      </binding>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>sim/sound/switch1</property>
 	      </binding>
 	  </action>
 	</animation>
-	
+
 	<!-- Nav [1] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.003</object-name>
-	  <condition>
-		  <and>
+		<type>select</type>
+		<object-name>LampWhiteON.003</object-name>
+		<condition>
 			<greater-than>
 				<property>b707/ess-bus</property>
 				<value>20</value>
 			</greater-than>
-		    <or>
-				<and>
-			  	  <property>instrumentation/nav[1]/in-range</property>
-			  	  <property>instrumentation/nav[1]/ident</property>
-			  	</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
+			<or>
+				<property>instrumentation/nav[1]/in-range</property>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.003</object-name>
@@ -594,7 +648,7 @@ if you contacted me before making any changes to this software.
 			<z>1</z>
 		</axis>
 	</animation>
-	
+
 	<animation>
 		<type>pick</type>
 		<object-name>knob.003</object-name>
@@ -603,15 +657,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[1]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -620,15 +690,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[1]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -637,15 +723,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[1]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -654,15 +756,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/nav[1]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/nav[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/nav[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/nav[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -672,7 +790,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.003</object-name>
-	  <property>instrumentation/nav[1]/ident</property>
+	  <property>instrumentation/nav[1]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -691,11 +809,11 @@ if you contacted me before making any changes to this software.
 	  <visible>true</visible>
 	  <object-name>switch.003</object-name>
 	  <action>
-	      <button>0</button>      
+	      <button>0</button>
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/nav[1]/ident</property>
-	      </binding>  
+	        <property>instrumentation/nav[1]/power-btn</property>
+	      </binding>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>sim/sound/switch1</property>
@@ -705,25 +823,20 @@ if you contacted me before making any changes to this software.
 
 	<!-- Dme [0] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.004</object-name>
-	  <condition>
-		  <and>
+		<type>select</type>
+		<object-name>LampWhiteON.004</object-name>
+		<condition>
 			<greater-than>
 				<property>b707/ess-bus</property>
 				<value>20</value>
 			</greater-than>
-		    <or>
-				<and>
-			  	  <property>instrumentation/dme[0]/in-range</property>
-			  	  <property>instrumentation/dme[0]/ident</property>
-			  	</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
+			<or>
+				<property>instrumentation/dme[0]/in-range</property>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.004</object-name>
@@ -749,15 +862,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[0]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -766,15 +895,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[0]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -783,15 +928,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[0]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -800,15 +961,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[0]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[0]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[0]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -818,7 +995,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.004</object-name>
-	  <property>instrumentation/dme[0]/ident</property>
+	  <property>instrumentation/dme[0]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -833,43 +1010,54 @@ if you contacted me before making any changes to this software.
 	</animation>
 
 	<animation>
-	  <type>pick</type>
-	  <visible>true</visible>
-	  <object-name>switch.004</object-name>
-	  <action>
-	      <button>0</button>      
-	      <binding>
-	        <command>property-toggle</command>
-	        <property>instrumentation/dme[0]/ident</property>
-	      </binding>  
-	      <binding>
-	        <command>property-toggle</command>
-	        <property>sim/sound/switch1</property>
-	      </binding>
-	  </action>
+		<type>pick</type>
+		<visible>true</visible>
+		<object-name>switch.004</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/dme[0]/power-btn</property>
+			</binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[0]/power-btn</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/frequencies/source</property>
+				<value>instrumentation/nav[0]/frequencies/selected-mhz</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[0]/power-btn</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[0]/frequencies/source</property>
+				<value>instrumentation/dme[0]/power-btn</value>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/sound/switch1</property>
+			</binding>
+		</action>
 	</animation>
-	
+
 	<!-- Dme [1] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.005</object-name>
-	  <condition>
-		  <and>
+		<type>select</type>
+		<object-name>LampWhiteON.005</object-name>
+		<condition>
 			<greater-than>
 				<property>b707/ess-bus</property>
 				<value>20</value>
 			</greater-than>
-		    <or>
-				<and>
-			  	  <property>instrumentation/dme[1]/in-range</property>
-			  	  <property>instrumentation/dme[1]/ident</property>
-			  	</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
+			<or>
+				<property>instrumentation/dme[1]/in-range</property>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.005</object-name>
@@ -886,7 +1074,7 @@ if you contacted me before making any changes to this software.
 			<z>1</z>
 		</axis>
 	</animation>
-	
+
 	<animation>
 		<type>pick</type>
 		<object-name>knob.005</object-name>
@@ -895,15 +1083,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[1]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -912,15 +1116,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[1]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -929,15 +1149,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[1]/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -946,15 +1182,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/dme[1]/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[1]/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[1]/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/ident</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -964,7 +1216,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.005</object-name>
-	  <property>instrumentation/dme[1]/ident</property>
+	  <property>instrumentation/dme[1]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -979,43 +1231,54 @@ if you contacted me before making any changes to this software.
 	</animation>
 
 	<animation>
-	  <type>pick</type>
-	  <visible>true</visible>
-	  <object-name>switch.005</object-name>
-	  <action>
-	      <button>0</button>      
-	      <binding>
-	        <command>property-toggle</command>
-	        <property>instrumentation/dme[1]/ident</property>
-	      </binding>  
-	      <binding>
-	        <command>property-toggle</command>
-	        <property>sim/sound/switch1</property>
-	      </binding>
-	  </action>
+		<type>pick</type>
+		<visible>true</visible>
+		<object-name>switch.005</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/dme[1]/power-btn</property>
+			</binding>
+			<binding>
+				<condition>
+					<property>instrumentation/dme[1]/power-btn</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/frequencies/source</property>
+				<value>instrumentation/nav[1]/frequencies/selected-mhz</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/dme[1]/power-btn</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/dme[1]/frequencies/source</property>
+				<value>instrumentation/dme[1]/power-btn</value>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>sim/sound/switch1</property>
+			</binding>
+		</action>
 	</animation>
-	
+
 	<!-- ADF [0] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.006</object-name>
-	  <condition>
-		  <and>
+		<type>select</type>
+		<object-name>LampWhiteON.006</object-name>
+		<condition>
 			<greater-than>
 				<property>b707/ess-bus</property>
 				<value>20</value>
 			</greater-than>
-		    <or>
-				<and>
-			  	  <property>instrumentation/adf[0]/in-range</property>
-			  	  <property>instrumentation/adf[0]/ident-audible</property>
-			  	</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
+			<or>
+				<property>instrumentation/adf[0]/in-range</property>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.006</object-name>
@@ -1032,7 +1295,7 @@ if you contacted me before making any changes to this software.
 			<z>1</z>
 		</axis>
 	</animation>
-	
+
 	<animation>
 		<type>pick</type>
 		<object-name>knob.006</object-name>
@@ -1041,15 +1304,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[0]/volume-norm</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[0]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[0]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1058,15 +1337,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[0]/volume-norm</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[0]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[0]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1075,15 +1370,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[0]/volume-norm</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[0]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[0]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1092,15 +1403,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[0]/volume-norm</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[0]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[0]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[0]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1110,7 +1437,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.006</object-name>
-	  <property>instrumentation/adf[0]/ident-audible</property>
+	  <property>instrumentation/adf[0]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -1129,39 +1456,34 @@ if you contacted me before making any changes to this software.
 	  <visible>true</visible>
 	  <object-name>switch.006</object-name>
 	  <action>
-	      <button>0</button>      
+	      <button>0</button>
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/adf[0]/ident-audible</property>
-	      </binding>  
+	        <property>instrumentation/adf[0]/power-btn</property>
+	      </binding>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>sim/sound/switch1</property>
 	      </binding>
 	  </action>
 	</animation>
-	
+
 	<!-- ADF [1] -->
 	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.007</object-name>
-	  <condition>
-		  <and>
+		<type>select</type>
+		<object-name>LampWhiteON.007</object-name>
+		<condition>
 			<greater-than>
 				<property>b707/ess-bus</property>
 				<value>20</value>
 			</greater-than>
-		    <or>
-				<and>
-			  	  <property>instrumentation/adf[1]/in-range</property>
-			  	  <property>instrumentation/adf[1]/ident-audible</property>
-			  	</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
+			<or>
+				<property>instrumentation/adf[1]/in-range</property>
+				<property>controls/test/warn-knob</property>
+			</or>
+		</condition>
 	</animation>
-	
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.007</object-name>
@@ -1178,7 +1500,7 @@ if you contacted me before making any changes to this software.
 			<z>1</z>
 		</axis>
 	</animation>
-	
+
 	<animation>
 		<type>pick</type>
 		<object-name>knob.007</object-name>
@@ -1187,15 +1509,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[1]/volume-norm</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[1]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[1]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1204,15 +1542,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[1]/volume-norm</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[1]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[1]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1221,15 +1575,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[1]/volume-norm</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[1]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[1]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1238,15 +1608,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/adf[1]/volume-norm</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/adf[1]/volume-norm</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/adf[1]/volume-norm</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/adf[1]/ident-audible</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1256,7 +1642,7 @@ if you contacted me before making any changes to this software.
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.007</object-name>
-	  <property>instrumentation/adf[1]/ident-audible</property>
+	  <property>instrumentation/adf[1]/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -1275,11 +1661,11 @@ if you contacted me before making any changes to this software.
 	  <visible>true</visible>
 	  <object-name>switch.007</object-name>
 	  <action>
-	      <button>0</button>      
+	      <button>0</button>
 	      <binding>
 	        <command>property-toggle</command>
-	        <property>instrumentation/adf[1]/ident-audible</property>
-	      </binding>  
+	        <property>instrumentation/adf[1]/power-btn</property>
+	      </binding>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>sim/sound/switch1</property>
@@ -1288,26 +1674,23 @@ if you contacted me before making any changes to this software.
 	</animation>
 
 	<!-- Marker Beacon -->
-	<animation>
-	  <type>select</type>
-	  <object-name>LampWhiteON.008</object-name>
-	  <condition>
-		  <and>
-			<greater-than>
-				<property>b707/ess-bus</property>
-				<value>20</value>
-			</greater-than>
-		    <or>
-				<and>
-			  	  <property>instrumentation/marker-beacon/in-range</property>
-			  	  <property>instrumentation/marker-beacon/audio-btn</property>
-			  	</and>
-		      <property>controls/test/warn-knob</property>
-		    </or>
-		  </and>
-	  </condition>
-	</animation>
-	
+    <animation>
+        <type>select</type>
+        <object-name>LampWhiteON.008</object-name>
+        <condition>
+                <greater-than>
+                        <property>b707/ess-bus</property>
+                        <value>20</value>
+                </greater-than>
+                <or>
+                        <property>instrumentation/marker-beacon/inner</property>
+                        <property>instrumentation/marker-beacon/middle</property>
+                        <property>instrumentation/marker-beacon/outer</property>
+                        <property>controls/test/warn-knob</property>
+                </or>
+        </condition>
+    </animation>
+
 	<animation>
 		<type>rotate</type>
 		<object-name>knob.008</object-name>
@@ -1324,7 +1707,7 @@ if you contacted me before making any changes to this software.
 			<z>1</z>
 		</axis>
 	</animation>
-	
+
 	<animation>
 		<type>pick</type>
 		<object-name>knob.008</object-name>
@@ -1333,15 +1716,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>0</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/marker-beacon/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/marker-beacon/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/marker-beacon/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1350,15 +1749,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>1</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/marker-beacon/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/marker-beacon/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/marker-beacon/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1367,15 +1782,31 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine dec</name>
 			<button>3</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/marker-beacon/volume</property>
 				<step>0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/marker-beacon/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/marker-beacon/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
@@ -1384,25 +1815,41 @@ if you contacted me before making any changes to this software.
 			<name>calibrate fine inc</name>
 			<button>4</button>
 			<repeatable>true</repeatable>
-			<binding>	          
+			<binding>
 				<command>property-adjust</command>
 				<property>instrumentation/marker-beacon/volume</property>
 				<step>-0.1</step>
-				<min>0.01</min>
+				<min>0.0</min>
 				<max>1.0</max>
 				<wrap>false</wrap>
 			</binding>
-		  	<binding>
+			<binding>
+				<condition>
+					<property>instrumentation/marker-beacon/volume</property>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<condition>
+					<not><property>instrumentation/marker-beacon/volume</property></not>
+				</condition>
+				<command>property-assign</command>
+				<property>instrumentation/marker-beacon/audio-btn</property>
+				<value>0</value>
+			</binding>
+			<binding>
 				<command>property-toggle</command>
 				<property>sim/sound/switch3</property>
 			</binding>
 		</action>
 	</animation>
-	
+
 	<animation>
 	  <type>rotate</type>
 	  <object-name>switch.008</object-name>
-	  <property>instrumentation/marker-beacon/audio-btn</property>
+	  <property>instrumentation/marker-beacon/power-btn</property>
 	  <factor>-40</factor>
 	  <center>
 	    <x-m> 0.0264</x-m>
@@ -1421,15 +1868,11 @@ if you contacted me before making any changes to this software.
 	  <visible>true</visible>
 	  <object-name>switch.008</object-name>
 	  <action>
-	      <button>0</button>      
-	      <binding>
-	        <command>property-toggle</command>
-	        <property>instrumentation/marker-beacon/audio-btn</property>
-	      </binding>
+	      <button>0</button>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>instrumentation/marker-beacon/power-btn</property>
-	      </binding> 
+	      </binding>
 	      <binding>
 	        <command>property-toggle</command>
 	        <property>sim/sound/switch1</property>
