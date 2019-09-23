@@ -30,7 +30,7 @@ if you contacted me before making any changes to this software.
  <fileheader>
   <author>M.Kraus :: Lake of Constance Hangar</author>
   <filecreationdate>2014-02-24</filecreationdate>
-  <version>2.2.6</version>
+  <version>2.2.7</version>
   <description>Boeing 707 with Rolls Royce Conway RCo12/MK508 engines or Pratt and Whitney JT4</description>
  </fileheader>
 
@@ -177,7 +177,7 @@ if you contacted me before making any changes to this software.
       <side>120.0 </side>
     </force_lag_filter>
     <wheel_slip_filter> 120.0 </wheel_slip_filter>
-    <max_steer unit="DEG"> 35 </max_steer>
+    <max_steer unit="DEG"> 60 </max_steer>
     <brake_group> NONE </brake_group>
     <retractable>1</retractable>
  </contact>
@@ -188,9 +188,9 @@ if you contacted me before making any changes to this software.
      <y> -98.81 </y>
      <z> -116.3 </z>
    </location>
-   <static_friction>  0.55 </static_friction>
+   <static_friction>  0.35 </static_friction>
    <dynamic_friction> 0.70 </dynamic_friction>
-   <rolling_friction> 0.04 </rolling_friction>
+   <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="LBS/FT">     230000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC">140000.00 </damping_coeff>
    <max_steer unit="DEG">0</max_steer>
@@ -204,9 +204,9 @@ if you contacted me before making any changes to this software.
      <y> 98.81 </y>
      <z> -116.3 </z>
    </location>
-   <static_friction>  0.55 </static_friction>
+   <static_friction>  0.35 </static_friction>
    <dynamic_friction> 0.70 </dynamic_friction>
-   <rolling_friction> 0.04 </rolling_friction>
+   <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="LBS/FT">     230000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC">140000.00 </damping_coeff>
    <max_steer unit="DEG">0</max_steer>
